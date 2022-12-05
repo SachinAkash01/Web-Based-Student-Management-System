@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Register a New Student</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("button").click(function(){
+				let fname = document.getElementById("txtFName").value;
+				let lname = document.getElementById("txtLName").value;
+				let dob = document.getElementById("dob").value;
+				let email = document.getElementById("txtemail").value;
+				let sid = document.getElementById("txtID").value;
+				let center = document.getElementById("center").value;
+				
+				$.ajax({
+					url: 'http://localhost:3000/student',
+					type: 'POST',
+					contentType: 'application/json', 
+					data: JSON.stringify(
+						{
+							"firstName": fname,
+							"lastName": lname,
+							"dateOfBirth": dob,
+							"email": email,
+							"sid": sid,
+							"center": center,
+							"semester": parseInt($("#numSemester").val()),
+							"cgpa": parseFloat($("#cgpa").val())
+						}),
+					success: function(data, textStatus, jQxhr){
+						alert("Student Added Successfully!!!");
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert("Error! Please Check your Connection!");
+					}
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+  			$("input").focus(function(){
+    			$(this).css("background-color", "#EDEDED");
+  			});
+  			$("input").blur(function(){
+    			$(this).css("background-color", "");
+  			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="location">
+		<a href="https://www.facebook.com/profile.php?id=100064209064843"><img class="img" src="Images/facebook.png" alt="" height="44px"></a>
+		<label class="navContact"><img src="Images/male_user_50px.png" alt="" height="26px"/><a class="login" href="#"> Login</a></label>
+		<label class="navContact"><img src="Images/telephone.png" alt="" height="26px"/>+94714512189</label>
+		<label class="navContact"><img src="Images/222-2226601_email-icon-e-mail-white-icon-png.png" alt="" height="18px"/> winchild@gmail.com</label>
+		<label class="navContact"><img src="Images/Maps_icon.png" alt="" height="23px"/> Piliyandala</label>
+	</nav>
+	<nav class="navigation">
+		<label class="logo"><img src="Images/logo.png" alt="" height="73px"/> Winchild</label> 
+		<ul>
+			<li><a class="hover"  href="Home.html">Home</a></li>
+			<li><a class="active" href="#">Register</a></li>
+			<li><a class="hover" href="showStudents.html">Show Students</a></li>
+			<li><a class="hover" href="findStudent.html">Find Student</a></li>
+			<li><a class="hover" href="updateStudent.html">Update Student</a></li>
+			<li><a class="hover" href="deleteStudent.html">Delete Student</a></li>
+		</ul>
+	</nav>
+	<br><br><br><br>
+	<h1 align="center">-Register Student-</h1><br><br><br>
+	<p align="center">First Name: <input type="text" id="txtFName" name="txtFName" required> 
+		Last Name: <input type="text" id="txtLName" name="txtLName" required> 
+		Date of Birth: <input type="date" id="dob" name="dob" required><br><br>
+		Email: <input type="text" id="txtemail" name="txtemail" required>
+		SID: <input type="text" id="txtID" name="txtID" required>
+		Center: <select class="option" id="center" name="center" required>
+		<option disabled="disabled" selected="selected">--Choose Center</option>
+				<option> Colombo </option>
+				<option> Kandy </option>
+				<option> Jaffna </option>
+		</select><br><br>
+		Semester: <input type="number" id="numSemester" name="numSemester" min="1" max="2" required>
+		CGPA: <input type="text" id="cgpa" name="cgpa" required><br><br>
+		<button type="submit" id="btnRegister" name="btnRegister" value="Register">Register</button>
+	</p>
+</body>
+</html>

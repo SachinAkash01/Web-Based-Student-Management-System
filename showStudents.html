@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Students</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		$.ajax({
+			url: 'http://localhost:3000/students',
+			type: 'GET',
+			contentType: 'application/json', 
+			dataType: "json",
+			success: function (data, textStatus, jQxhr) {
+				let text = "<table border='3px'><tr><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Email</th><th>SID</th><th>Center</th><th>Semester</th><th>CGPA</th></tr>";
+				for (let i = 0; i < data.length; i++) {
+					text += "<tr><td>" + data[i].firstName + "</td><td>" + data[i].lastName + "</td><td align='center'>" + data[i].dateOfBirth + "</td><td align='center'>" + data[i].email + "</td><td>" + data[i].sid + "</td><td align='center'>" + data[i].center + "</td><td align='center'>" + data[i].semester + "</td><td align='center'>" + data[i].cgpa +"</td></tr>";
+				}
+				text += "</table>";
+				
+				if ($("button").click())
+					{
+						document.getElementById("showTable").innerHTML = text;
+					}
+			},
+			error: function (data, textStatus, errorThrown) {
+				console.log(errorThrown);
+			}
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+  			$("button").click(function(){
+    			$("#showTable").toggle("miliseconds");
+  			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="location">
+		<a href="https://www.facebook.com/profile.php?id=100064209064843"><img class="img" src="Images/facebook.png" alt="" height="44px"></a>
+		<label class="navContact"><img src="Images/male_user_50px.png" alt="" height="26px"/><a class="login" href="#"> Login</a></label>
+		<label class="navContact"><img src="Images/telephone.png" alt="" height="26px"/>+94714512189</label>
+		<label class="navContact"><img src="Images/222-2226601_email-icon-e-mail-white-icon-png.png" alt="" height="18px"/> winchild@gmail.com</label>
+		<label class="navContact"><img src="Images/Maps_icon.png" alt="" height="23px"/> Piliyandala</label>
+	</nav>
+	<nav class="navigation">
+		<label class="logo"><img src="Images/logo.png" alt="" height="73px"/> Winchild</label> 
+		<ul>
+			<li><a class="hover"  href="Home.html">Home</a></li>
+			<li><a class="hover" href="Register.html">Register</a></li>
+			<li><a class="active" href="#">Show Students</a></li>
+			<li><a class="hover" href="findStudent.html">Find Student</a></li>
+			<li><a class="hover" href="updateStudent.html">Update Student</a></li>
+			<li><a class="hover" href="deleteStudent.html">Delete Student</a></li>
+		</ul>
+	</nav>
+	<br><br><br><br>
+	<h1 align="center">-Student Records-</h1><br><br>
+	<p id="showTable" align="center"></p>
+	<br><br><br><br>
+	<p align="center"><button type="button" id="btnToggle" name="btnToggle">Show - Hide</button></p>
+</body>
+</html>

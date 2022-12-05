@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Find a Student</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("#btnID").click(function(){
+				$.ajax({
+					url: "http://localhost:3000/students/id=" + $('#txtID').val(),
+					type: 'GET',
+					contentType: 'application/json', 
+					dataType: "json",
+					success: function (data, textStatus, jQxhr) {
+						let text = "<table border='3px'><tr><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Email</th><th>SID</th><th>Center</th><th>Semester</th><th>CGPA</th></tr>";
+						for (let i = 0; i < data.length; i++) {
+							text += "<tr><td>" + data[i].firstName + "</td><td>" + data[i].lastName + "</td><td align='center'>" + data[i].dateOfBirth + "</td><td align='center'>" + data[i].email + "</td><td>" + data[i].sid + "</td><td align='center'>" + data[i].center + "</td><td align='center'>" + data[i].semester + "</td><td align='center'>" + data[i].cgpa +"</td></tr>";
+						}
+						text += "</table>";
+						document.getElementById("tablesid").innerHTML = text;
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+			
+			$("#btnFname").click(function(){
+				$.ajax({
+					url: "http://localhost:3000/students/name=" + $('#txtFName').val(),
+					type: 'GET',
+					contentType: 'application/json', 
+					dataType: "json",
+					success: function (data, textStatus, jQxhr) {
+						let text = "<table border='3px'><tr><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Email</th><th>SID</th><th>Center</th><th>Semester</th><th>CGPA</th></tr>";
+						for (let i = 0; i < data.length; i++) {
+							text += "<tr><td>" + data[i].firstName + "</td><td>" + data[i].lastName + "</td><td align='center'>" + data[i].dateOfBirth + "</td><td align='center'>" + data[i].email + "</td><td>" + data[i].sid + "</td><td align='center'>" + data[i].center + "</td><td align='center'>" + data[i].semester + "</td><td align='center'>" + data[i].cgpa +"</td></tr>";
+						}
+						text += "</table>";
+						document.getElementById("tablefname").innerHTML = text;
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+			
+			$("#btnCenter").click(function(){
+				$(document).scrollTop(300);
+				$.ajax({
+					url: "http://localhost:3000/students/center=" + $('#txtCenter').val(),
+					type: 'GET',
+					contentType: 'application/json', 
+					dataType: "json",
+					success: function (data, textStatus, jQxhr) {
+						let text = "<table border='3px'><tr><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Email</th><th>SID</th><th>Center</th><th>Semester</th><th>CGPA</th></tr>";
+						for (let i = 0; i < data.length; i++) {
+							text += "<tr><td>" + data[i].firstName + "</td><td>" + data[i].lastName + "</td><td align='center'>" + data[i].dateOfBirth + "</td><td align='center'>" + data[i].email + "</td><td>" + data[i].sid + "</td><td align='center'>" + data[i].center + "</td><td align='center'>" + data[i].semester + "</td><td align='center'>" + data[i].cgpa +"</td></tr>";
+						}
+						text += "</table>";
+						document.getElementById("tablecenter").innerHTML = text;
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+			
+			$("#btnSemester").click(function(){
+				$(document).scrollTop(500);
+				$.ajax({
+					url: "http://localhost:3000/students/semester=" + $('#txtSemester').val(),
+					type: 'GET',
+					contentType: 'application/json', 
+					dataType: "json",
+					success: function (data, textStatus, jQxhr) {
+						let text = "<table border='3px'><tr><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Email</th><th>SID</th><th>Center</th><th>Semester</th><th>CGPA</th></tr>";
+						for (let i = 0; i < data.length; i++) {
+							text += "<tr><td>" + data[i].firstName + "</td><td>" + data[i].lastName + "</td><td align='center'>" + data[i].dateOfBirth + "</td><td align='center'>" + data[i].email + "</td><td>" + data[i].sid + "</td><td align='center'>" + data[i].center + "</td><td align='center'>" + data[i].semester + "</td><td align='center'>" + data[i].cgpa +"</td></tr>";
+						}
+						text += "</table>";
+						document.getElementById("tablesemester").innerHTML = text;
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+			
+			$("#btncgpa").click(function(){
+				$(document).scrollTop(900);
+				$.ajax({
+					url: "http://localhost:3000/students/cgpa=" + $('#txtcgpa').val(),
+					type: 'GET',
+					contentType: 'application/json', 
+					dataType: "json",
+					success: function (data, textStatus, jQxhr) {
+						let text = "<table border='3px'><tr><th>First Name</th><th>Last Name</th><th>Date of Birth</th><th>Email</th><th>SID</th><th>Center</th><th>Semester</th><th>CGPA</th></tr>";
+						for (let i = 0; i < data.length; i++) {
+							text += "<tr><td>" + data[i].firstName + "</td><td>" + data[i].lastName + "</td><td align='center'>" + data[i].dateOfBirth + "</td><td align='center'>" + data[i].email + "</td><td>" + data[i].sid + "</td><td align='center'>" + data[i].center + "</td><td align='center'>" + data[i].semester + "</td><td align='center'>" + data[i].cgpa +"</td></tr>";
+						}
+						text += "</table>";
+						document.getElementById("tablecgpa").innerHTML = text;
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+  			$("input").focus(function(){
+    			$(this).css("background-color", "#EDEDED");
+  			});
+  			$("input").blur(function(){
+    			$(this).css("background-color", "");
+  			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="location">
+		<a href="https://www.facebook.com/profile.php?id=100064209064843"><img class="img" src="Images/facebook.png" alt="" height="44px"></a>
+		<label class="navContact"><img src="Images/male_user_50px.png" alt="" height="26px"/><a class="login" href="#"> Login</a></label>
+		<label class="navContact"><img src="Images/telephone.png" alt="" height="26px"/>+94714512189</label>
+		<label class="navContact"><img src="Images/222-2226601_email-icon-e-mail-white-icon-png.png" alt="" height="18px"/> winchild@gmail.com</label>
+		<label class="navContact"><img src="Images/Maps_icon.png" alt="" height="23px"/> Piliyandala</label>
+	</nav>
+	<nav class="navigation">
+		<label class="logo"><img src="Images/logo.png" alt="" height="73px"/> Winchild</label> 
+		<ul>
+			<li><a class="hover"  href="Home.html">Home</a></li>
+			<li><a class="hover" href="Register.html">Register</a></li>
+			<li><a class="hover" href="showStudents.html">Show Students</a></li>
+			<li><a class="active" href="#">Find Student</a></li>
+			<li><a class="hover" href="updateStudent.html">Update Student</a></li>
+			<li><a class="hover" href="deleteStudent.html">Delete Student</a></li>
+		</ul>
+	</nav>
+	<br><br><br><br>
+	<h1 align="center">-Find Student Record-</h1><br><br><br>
+	
+	<p align="center"> Enter Student ID: <input type="text" id="txtID" name="txtID"><br><br><br><button type="submit" id="btnID">Find By SID</button></p>
+	<br><br><p id="tablesid" align="center"></p><br><br><br><br>
+	
+	<p align="center"> Enter First Name: <input type="text" id="txtFName" name="txtFName"><br><br><br><button type="submit" id="btnFname">Find By First Name</button></p><br><br><p id="tablefname" align="center"></p><br><br><br><br>
+	
+	<p align="center"> Enter Student Center: <input type="text" id="txtCenter" name="txtCenter"><br><br><br><button type="submit" id="btnCenter">Find By Center</button></p><br><br><p id="tablecenter" align="center"></p><br><br><br><br>
+	
+	<p align="center"> Enter Semester: <input type="text" id="txtSemester" name="txtSemester"><br><br><br><button type="submit" id="btnSemester">Find By Semester</button></p><br><br><p id="tablesemester" align="center"></p><br><br><br><br>
+	
+	<p align="center"> Enter CGPA: <input type="text" id="txtcgpa" name="txtcgpa"><br><br><br><button type="submit" id="btncgpa">Find By CGPA</button></p><br><br><p id="tablecgpa" align="center"></p><br><br><br><br>
+</body>
+</html>

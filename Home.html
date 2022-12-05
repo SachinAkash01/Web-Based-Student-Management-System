@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+Reg. No: IT21351372
+Name: K.D.S. Akash
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>K.D.S.Akash - IT21351372</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body onLoad="showSlides()">
+	<nav class="location">
+		<a href="https://www.facebook.com/profile.php?id=100064209064843"><img class="img" src="Images/facebook.png" alt="" height="44px"></a>
+		<label class="navContact"><img src="Images/male_user_50px.png" alt="" height="26px"/><a class="login" href="#"> Login</a></label>
+		<label class="navContact"><img src="Images/telephone.png" alt="" height="26px"/>+94714512189</label>
+		<label class="navContact"><img src="Images/222-2226601_email-icon-e-mail-white-icon-png.png" alt="" height="18px"/> winchild@gmail.com</label>
+		<label class="navContact"><img src="Images/Maps_icon.png" alt="" height="23px"/> Piliyandala</label>
+	</nav>
+	<nav class="navigation">
+		<label class="logo"><img src="Images/logo.png" alt="" height="73px"/> Winchild</label> 
+		<ul>
+			<li><a class="active"  href="#">Home</a></li>
+			<li><a class="hover" href="Register.html">Register</a></li>
+			<li><a class="hover" href="showStudents.html">Show Students</a></li>
+			<li><a class="hover" href="findStudent.html">Find Student</a></li>
+			<li><a class="hover" href="updateStudent.html">Update Student</a></li>
+			<li><a class="hover" href="deleteStudent.html">Delete Student</a></li>
+		</ul>
+	</nav>
+	<script>
+		let slideIndex = 0;
+		showSlides();
+		function showSlides() {
+			let i;
+			let slides = document.getElementsByClassName("mySlides");
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			}
+			slideIndex++;
+			if (slideIndex > slides.length) {slideIndex = 1}
+			slides[slideIndex-1].style.display = "block";
+			setTimeout(showSlides, 9000); // Change image every 9 seconds
+		}
+	</script>
+	<div class ="slideshow-container">
+		<div class="mySlides fade">
+			<img src="Images/img3.png" width="100%" alt="">
+			<div class="text">
+				<p style="font-size: 50px">Play. Learn. Grow.</p>
+			</div>
+		</div>
+		<div class="mySlides fade">
+			<img src="Images/img1.png" width="100%" alt="">
+			<div class="text">
+				<p style="font-size: 40px">Welcome to</p><br><h1 style="font-size: 50px">Winchild</h1><p style="font-size: 30px">The premier Pre-School, Day care and After School<br>Service provider in Sri Lanka..</p><br>
+				<a href="https://www.facebook.com/profile.php?id=100064209064843"><button type="button" id="btnRead" value="Read More" style="font-size: 18px">Read More</button></a>
+			</div>
+		</div>
+		<div class="mySlides fade">
+			<img src="Images/img2.png" width="100%" alt="">
+			<div class="text"></div>
+		</div>
+	</div>
+</body>
+</html>

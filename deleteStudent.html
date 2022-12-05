@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Remove Student Records</title>
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("#btnID").click(function(){
+				
+				$.ajax({
+					url: "http://localhost:3000/student/"+ $("#txtID").val(),
+					type: 'DELETE',
+					contentType: 'application/json', 
+					dataType: 'json',
+					success: function(data, textStatus, jQxhr){
+						alert(data.message);
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+			
+			$("#btnEmail").click(function(){
+				
+				$.ajax({
+					url: "http://localhost:3000/students/"+ $("#txtEmail").val(),
+					type: 'DELETE',
+					contentType: 'application/json', 
+					dataType: 'json',
+					success: function(data, textStatus, jQxhr){
+						alert(data.message);
+					},
+					error: function (data, textStatus, errorThrown) {
+						alert(data.message);
+					}
+				});
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+  			$("input").focus(function(){
+    			$(this).css("background-color", "#EDEDED");
+  			});
+  			$("input").blur(function(){
+    			$(this).css("background-color", "");
+  			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="location">
+		<a href="https://www.facebook.com/profile.php?id=100064209064843"><img class="img" src="Images/facebook.png" alt="" height="44px"></a>
+		<label class="navContact"><img src="Images/male_user_50px.png" alt="" height="26px"/><a class="login" href="#"> Login</a></label>
+		<label class="navContact"><img src="Images/telephone.png" alt="" height="26px"/>+94714512189</label>
+		<label class="navContact"><img src="Images/222-2226601_email-icon-e-mail-white-icon-png.png" alt="" height="18px"/> winchild@gmail.com</label>
+		<label class="navContact"><img src="Images/Maps_icon.png" alt="" height="23px"/> Piliyandala</label>
+	</nav>
+	<nav class="navigation">
+		<label class="logo"><img src="Images/logo.png" alt="" height="73px"/> Winchild</label> 
+		<ul>
+			<li><a class="hover"  href="Home.html">Home</a></li>
+			<li><a class="hover" href="Register.html">Register</a></li>
+			<li><a class="hover" href="showStudents.html">Show Students</a></li>
+			<li><a class="hover" href="findStudent.html">Find Student</a></li>
+			<li><a class="hover" href="updateStudent.html">Update Student</a></li>
+			<li><a class="active" href="#">Delete Student</a></li>
+		</ul>
+	</nav>
+	<br><br><br><br>
+	<h1 align="center">-Delete Student Record-</h1><br><br><br>
+	<p align="center"> Enter Student ID: <input type="text" id="txtID" name="txtID"><br><br><br><button type="submit" id="btnID">Delete By SID</button></p>
+	<br><br><br><br>
+	<p align="center"> Enter Student Email: <input type="text" id="txtEmail" name="txtEmail"><br><br><br><button type="submit" id="btnEmail">Delete By Email</button></p>
+</body>
+</html>
